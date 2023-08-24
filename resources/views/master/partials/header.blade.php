@@ -16,7 +16,7 @@
         <ul class="flex">
             @foreach ($links as $link)
                 <li class=""><a
-                        class="w-full px-6 py-2 text-2xl font-semibold rounded cursor-pointer hover:bg-primary-400 hover:text-white"
+                        class="w-full px-6 py-2 text-2xl text-gray-600 font-semibold rounded cursor-pointer hover:bg-primary-400 hover:text-white"
                         href="{{ $link['url'] }}">{{ $link['text'] }}</a>
                 </li>
             @endforeach
