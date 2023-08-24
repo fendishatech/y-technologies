@@ -14,5 +14,5 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // HOME ROUTES
 Route::controller(HomeController::class)->group(function () {
-    Route::get('/home', 'index');
+    Route::get('/home', 'index')->name('home');
 });
