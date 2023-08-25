@@ -7,12 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Y Technologies | @yield('page_title')</title>
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="/css/main.css">
+    @yield('styles')
 </head>
 
 <body>
     @include('master.partials.header')
     @yield('content')
     @include('master.partials.footer')
+
+    <script src="/js/main.js"></script>
+    @yield('scripts')
 </body>
 
 </html>

@@ -5,10 +5,13 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 // AUTH ROUTES
-Route::get('/', function () {
-    return view('auth.login');
+Route::middleware('redirectLoggedIn')->group(function () {
+    Route::get('/', function () {
+        return view('auth.login');
+    });
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
 });
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
