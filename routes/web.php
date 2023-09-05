@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,5 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::controller(HomeController::class)->group(function () {
     Route::get('/home', 'index')->name('home');
 });
+
+Route::resource('customers', CustomerController::class);

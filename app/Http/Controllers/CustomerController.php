@@ -12,7 +12,11 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        $customers = Customer::paginate(10);
+
+        return view('customers.index')->with([
+            'customers' => $customers
+        ]);
     }
 
     /**
@@ -20,7 +24,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.new');
     }
 
     /**

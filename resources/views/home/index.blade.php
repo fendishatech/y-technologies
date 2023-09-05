@@ -15,7 +15,7 @@
             @include('home.partials.orders_table')
             <div class="flex justify-between">
                 <h1 class="mt-4 text-2xl text-gray-500 font-semibold">Customers Table</h1>
-                <a href="{{ route('/customers') }}">View More</a>
+                <a href="{{ route('customers.index') }}">View More</a>
             </div>
             @include('home.partials.customers_table')
             <h1 class="mt-4 text-2xl text-gray-500 font-semibold">Users Table</h1>
