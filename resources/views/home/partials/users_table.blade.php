@@ -1,23 +1,3 @@
-@php
-    $users = [
-        [
-            'id' => 1,
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email' => 'john@example.com',
-            'phone_no' => '1234567890',
-        ],
-        [
-            'id' => 2,
-            'first_name' => 'Jane',
-            'last_name' => 'Smith',
-            'email' => 'jane@example.com',
-            'phone_no' => '9876543210',
-        ],
-    ];
-    
-@endphp
-
 <div class="flex flex-col mt-6">
     <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -74,7 +54,7 @@
                                 <td class="py-4 px-6 text-left">{{ $user['first_name'] }} {{ $user['last_name'] }}</td>
                                 <td class="py-4 px-6 text-left">{{ $user['email'] }}</td>
                                 <td class="py-4 px-6 text-left">{{ $user['phone_no'] }}</td>
-                                <td class="py-4 px-6 text-center flex justify-end gap-2">
+                                <td class="py-4 px-6 text-center flex justify-start gap-2">
                                     <a href="{{ url('/users/' . $user['id']) }}"
                                         class="px-4 py-1 text-sm text-indigo-600 hover:text-indigo-200 bg-indigo-200 hover:bg-indigo-400 rounded-full">View</a>
                                     <a href="{{ url('/users/' . $user['id'] . '/edit') }}"
