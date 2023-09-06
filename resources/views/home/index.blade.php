@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <section class="container mx-auto px-6">
+    <section class="container mx-auto my-10 px-6">
         <h1 class="text-2xl text-gray-500 font-semibold">Stats</h1>
         @include('home.partials.stats')
     </section>

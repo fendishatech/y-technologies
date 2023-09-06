@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers');
+            $table->string('order_no');
 
             $table->string('material');
             $table->string('size');
@@ -33,7 +34,6 @@ return new class extends Migration
             $table->decimal('prepay', 10, 2);
             $table->decimal('remaining', 10, 2);
 
-            $table->string('order_no');
             $table->timestamps();
         });
     }

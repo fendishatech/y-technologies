@@ -11,7 +11,7 @@
     @yield('styles')
 </head>
 
-<body>
+<body class="bg-stone-200">
     @include('master.partials.header')
     @yield('content')
     @include('master.partials.footer')

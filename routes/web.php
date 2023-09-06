@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // AUTH ROUTES
@@ -22,3 +24,5 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 Route::resource('customers', CustomerController::class);
+Route::resource('orders', OrderController::class);
+Route::resource('users', UserController::class);
