@@ -5,12 +5,12 @@
 @endsection
 
 @section('content')
-    <div class="p-4">
-        <div class="w-full flex items-center justify-center bg-slate-100">
-            <form class="w-full  my-8 rounded-lg bg-white" action="{{ url('/clients') }}" method="POST"
+    <div class="container mx-auto px-6">
+        <div class="w-full flex items-center justify-center ">
+            <form class="w-full  my-8 rounded-lg bg-white" action="{{ url('/customers') }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
-                <h2 class="mt-4 mb-5 px-5 text-3xl font-medium opacity-80 text-yellow-800 ">
+                <h2 class="mt-4 mb-5 px-5 text-3xl font-medium opacity-80 text-gray-600 ">
                     Add New Client
                 </h2>
 
@@ -23,11 +23,11 @@
 
                     <div class="flex space-x-4">
                         <button type="submit"
-                            class="px-6 py-2 mt-8 font-medium text-xl rounded-md opacity-80 bg-yellow-700 hover:bg-yellow-800 text-gray-100 focus:outline-none">
-                            Add Client
+                            class="px-6 py-2 mt-8 font-medium text-xl rounded-md opacity-80 bg-primary-700 hover:bg-primary-800 text-gray-100 focus:outline-none">
+                            Add Customer
                         </button>
-                        <a href="{{ route('clients.index') }}"
-                            class="px-6 py-2 mt-8 font-medium text-xl rounded-md opacity-80 bg-red-800 hover:bg-red-900 text-gray-100 focus:outline-none">
+                        <a href="{{ route('customers.index') }}"
+                            class="px-6 py-2 mt-8 font-medium text-xl rounded-md opacity-80 bg-orange-700 hover:bg-orange-900 text-gray-100 focus:outline-none">
                             Cancel
                         </a>
                     </div>

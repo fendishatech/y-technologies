@@ -12,8 +12,8 @@
     <div class="p-4 overflow-hidden transform transition-transform duration-300 hover:scale-105">
         <div class="opacity-60 bg-white border-t-4 border-orange-500 rounded-lg shadow-md p-6">
             <a href="/orders?filter=pending">
-                <h1 class="text-xl text-gray-600 font-semibold">Pending Orders</h1>
-                <p class="text-3xl text-orange-700 font-bold">12</p>
+                <h1 class="text-xl text-gray-600 font-semibold">Active Orders</h1>
+                <p class="text-3xl text-orange-700 font-bold">{{ $active_orders }}</p>
             </a>
         </div>
     </div>
@@ -23,7 +23,7 @@
         <div class="opacity-60 bg-white border-t-4 border-green-500 rounded-lg shadow-md p-6">
             <a href="/orders?filter=pending">
                 <h1 class="text-1xl text-gray-600 font-semibold">Completed Orders</h1>
-                <p class="text-3xl text-green-700 font-bold">12</p>
+                <p class="text-3xl text-green-700 font-bold">{{ $completed_orders }}</p>
             </a>
         </div>
     </div>
@@ -42,8 +42,8 @@
     <div class="p-4 overflow-hidden transform transition-transform duration-300 hover:scale-105">
         <div class="opacity-60 bg-white border-t-4 border-indigo-500 rounded-lg shadow-md p-6">
             <a href="/orders?filter=pending">
-                <h1 class="text-1xl text-gray-600 font-semibold">Users</h1>
-                <p class="text-3xl text-indigo-700 font-bold">12</p>
+                <h1 class="text-1xl text-gray-600 font-semibold">Employees</h1>
+                <p class="text-3xl text-indigo-700 font-bold">{{ $employees }}</p>
             </a>
         </div>
     </div>

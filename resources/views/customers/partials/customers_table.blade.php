@@ -46,13 +46,11 @@
                         @foreach ($customers as $customer)
                             <tr class="border-b border-gray-200 ">
                                 <td class="py-4 px-6 text-left">{{ $loop->iteration }}</td>
-                                <td class="py-4 px-6 text-left">{{ $customer->first_name }} {{ $customer->father_name }}
+                                <td class="py-4 px-6 text-left">{{ $customer->first_name }} {{ $customer->last_name }}
                                 </td>
                                 <td class="py-4 px-6 text-left">{{ $customer->phone_no }}</td>
                                 <td class="py-4 px-6 text-center flex justify-start gap-2">
-                                    <a href="{{ url('/customers/make_member/' . $customer->id) }}"
-                                        class="px-4 py-1 text-md text-yellow-200 hover:text-yellow-200 bg-yellow-600 hover:bg-yellow-700 rounded-full">Make
-                                        Member</a>
+
                                     <a href="{{ url('/customers/' . $customer->id . '/edit') }}"
                                         class="px-4 py-1 text-md text-orange-600 hover:text-orange-200 bg-orange-200 hover:bg-orange-400 rounded-full">Edit</a>
 

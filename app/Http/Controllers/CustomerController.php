@@ -12,7 +12,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = Customer::paginate(10);
+        $customers = Customer::orderByDesc('created_at')->paginate(10);
 
         return view('customers.index')->with([
             'customers' => $customers
@@ -32,7 +32,32 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'first_name' => ['required', 'string', 'max:30'],
+            'last_name' => ['required', 'string', 'max:30'],
+            'email' => ['string', 'max:15', 'unique:customers'],
+            'phone_no' => ['required', 'string', 'max:15', 'unique:customers'],
+        ]);
+
+        try {
+
+            if ($validatedData) {
+
+                // Create a new customer using mass assignment
+                $customer = Customer::create($validatedData);
+
+                if ($customer) {
+                    return redirect('/customers')->with('success', 'Customer added successfully.');
+                } else {
+                    return redirect()->back()->withErrors("All fields are required")->withInput();
+                }
+            } else {
+                return redirect()->back()->withErrors("All fields are required")->withInput();
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->back()->withErrors(["custom_error" => "There was an error saving new record"])->withInput();
+        }
     }
 
     /**
@@ -46,9 +71,10 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Customer $customer)
+    public function edit(string $id)
     {
-        //
+        $customer = Customer::find($id);
+        return view('customers.edit')->with(['customer' => $customer]);
     }
 
     /**

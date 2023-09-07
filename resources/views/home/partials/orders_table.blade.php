@@ -68,34 +68,35 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
 
-                        {{-- @foreach ($users as $user) --}}
-                        <tr class="border-b border-gray-200 ">
-                            <td class="py-4 px-6 text-left">1</td>
-                            <td class="py-4 px-6 text-left">John Doe</td>
-                            <td class="py-4 px-6 text-left">234b567</td>
-                            <td class="py-4 px-6 text-left">Sheet Metal</td>
-                            <td class="py-4 px-6 text-left">9mm</td>
-                            <td class="py-4 px-6 text-left">180mm x 65.3mm</td>
-                            <td class="py-4 px-6 text-left">11 piece(s)</td>
-                            <td class="py-4 px-6 text-left">
-                                <button class="px-4 py-1 rounded-full bg-teal-800 text-white">Pending</button>
-                            </td>
-                            <td class="py-4 px-6 text-left flex justify-start gap-2">
-                                <a href="3"
-                                    class="px-4 py-2 text-sm text-indigo-600 hover:text-indigo-200 bg-indigo-200 hover:bg-indigo-400 rounded-full">View</a>
-                                <a href="#"
-                                    class="px-4 py-2 text-sm text-orange-600 hover:text-orange-200 bg-orange-200 hover:bg-orange-400 rounded-full">Edit</a>
+                        @foreach ($orders as $order)
+                            <tr class="border-b border-gray-200 ">
+                                <td class="py-4 px-6 text-left">{{ $loop->iteration }}</td>
+                                <td class="py-4 px-6 text-left">{{ $order->customer->first_name }}
+                                    {{ $order->customer->last_name }}</td>
+                                <td class="py-4 px-6 text-left">{{ $order->item_id }}</td>
+                                <td class="py-4 px-6 text-left">{{ $order->material }}</td>
+                                <td class="py-4 px-6 text-left">{{ $order->thickness }}</td>
+                                <td class="py-4 px-6 text-left">{{ $order->size }}</td>
+                                <td class="py-4 px-6 text-left">{{ $order->quantity }}</td>
+                                <td class="py-4 px-6 text-left">
+                                    <button class="px-4 py-1 rounded-full bg-teal-800 text-white">Pending</button>
+                                </td>
+                                <td class="py-4 px-6 text-left flex justify-start gap-2">
+                                    <a href="3"
+                                        class="px-4 py-2 text-sm text-indigo-600 hover:text-indigo-200 bg-indigo-200 hover:bg-indigo-400 rounded-full">View</a>
+                                    <a href="#"
+                                        class="px-4 py-2 text-sm text-orange-600 hover:text-orange-200 bg-orange-200 hover:bg-orange-400 rounded-full">Edit</a>
 
-                                <form action="3" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button
-                                        class="px-4 py-2 text-sm text-red-400 hover:text-red-200 bg-red-200 hover:bg-red-400 rounded-full"
-                                        onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        {{-- @endforeach --}}
+                                    <form action="3" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button
+                                            class="px-4 py-2 text-sm text-red-400 hover:text-red-200 bg-red-200 hover:bg-red-400 rounded-full"
+                                            onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

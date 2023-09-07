@@ -51,17 +51,17 @@
                         @foreach ($customers as $customer)
                             <tr class="border-b border-gray-200 ">
                                 <td class="py-4 px-6 text-left">{{ $loop->iteration }}</td>
-                                <td class="py-4 px-6 text-left">{{ $customer['first_name'] }}
-                                    {{ $customer['last_name'] }}</td>
-                                <td class="py-4 px-6 text-left">{{ $customer['email'] }}</td>
-                                <td class="py-4 px-6 text-left">{{ $customer['phone_no'] }}</td>
+                                <td class="py-4 px-6 text-left">{{ $customer->first_name }}
+                                    {{ $customer->last_name }}</td>
+                                <td class="py-4 px-6 text-left">{{ $customer->email }}</td>
+                                <td class="py-4 px-6 text-left">{{ $customer->phone_no }}</td>
                                 <td class="py-4 px-6 text-center flex justify-start gap-2">
-                                    <a href="{{ url('/customers/' . $customer['id']) }}"
+                                    <a href="{{ url('/customers/' . $customer->id) }}"
                                         class="px-4 py-1 text-sm text-indigo-600 hover:text-indigo-200 bg-indigo-200 hover:bg-indigo-400 rounded-full">View</a>
-                                    <a href="{{ url('/customers/' . $customer['id'] . '/edit') }}"
+                                    <a href="{{ url('/customers/' . $customer->id . '/edit') }}"
                                         class="px-4 py-1 text-sm text-orange-600 hover:text-orange-200 bg-orange-200 hover:bg-orange-400 rounded-full">Edit</a>
 
-                                    <form action="{{ url('/customers/' . $customer['id']) }}" method="POST">
+                                    <form action="{{ url('/customers/' . $customer->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button
