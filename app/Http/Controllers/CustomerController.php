@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CustomerController extends Controller
 {
@@ -80,16 +81,40 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Customer $customer)
+    public function update(Request $request, string $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'first_name' => ['nullable', 'string', 'max:30'],
+            'last_name' => ['nullable', 'string', 'max:30'],
+            'email' => ['nullable', 'string', Rule::unique('customers')->ignore($customer->id)],
+            'phone_no' => ['nullable', 'string', Rule::unique('customers')->ignore($customer->id)],
+        ]);
+        try {
+
+            if ($validatedData) {
+
+                // Create a new customer using mass assignment
+                $customer->update($validatedData);
+
+                return redirect('/customers')->with('success', 'Customer updated successfully.');
+            } else {
+                return redirect()->back()->withErrors(["custom_error" => "There was an error saving Customer"])->withInput();
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+            return redirect()->back()->withErrors(["custom_error" => "There was an error saving Customer"])->withInput();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Customer $customer)
+    public function destroy(string $id)
     {
-        //
+        $customer = Customer::find($id);
+        $customer->delete();
+        return redirect('customers')->with("success", "Customer has been deleted");
     }
 }
