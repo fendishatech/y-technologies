@@ -26,3 +26,5 @@ Route::controller(HomeController::class)->group(function () {
 Route::resource('customers', CustomerController::class);
 Route::resource('orders', OrderController::class);
 Route::resource('users', UserController::class);
+Route::resource('sales', UserController::class);
+Route::resource('store', UserController::class);

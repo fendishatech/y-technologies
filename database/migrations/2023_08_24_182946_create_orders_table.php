@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('thickness');
 
             $table->integer('quantity');
-            $table->integer('completed');
+            $table->integer('completed')->default(0);
 
             $table->string('item_name');
             $table->string('item_id');
