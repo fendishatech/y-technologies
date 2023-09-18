@@ -83,9 +83,24 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Order $order)
+    public function show(Order $id)
     {
-        //
+        $order = Order::findOrFail($id);
+        return view('orders.show');
+    }
+
+
+    /**
+     * Search Client record by order no
+     */
+    public function search(string $searchTerm)
+    {
+        // $searchTerm = request('searchTerm');
+        $sanitizedTerm = strip_tags($searchTerm);
+
+        $results = Order::where('order_no', 'like', "%$sanitizedTerm%")->get();
+
+        return $results;
     }
 
     /**

@@ -42,7 +42,7 @@
                 // You can choose to display all items, show a default message, or perform any desired action here
                 return;
             }
-            fetch(`/orders/search/${encodeURIComponent(searchTerm)}`)
+            fetch(`/clients/search/${encodeURIComponent(searchTerm)}`)
                 .then(response => response.json())
                 .then(data => {
                     // Handle and display the search results
@@ -51,8 +51,8 @@
                     if (data.length > 0) {
                         data.forEach(result => {
                             const resultDiv = document.createElement('div');
-                            resultDiv.innerHTML = `<h1 class="text-center text-2xl"> <a href="/orders/${result.id}">${result
-                                .order_no}</a></h1>`; // Display the result data
+                            resultDiv.innerHTML = `<h1 class="text-center text-2xl">${result
+                                .first_name}</h1>`; // Display the result data
                             searchResults.appendChild(resultDiv);
                         });
                     } else {

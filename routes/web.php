@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SaleController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +26,12 @@ Route::controller(HomeController::class)->group(function () {
 });
 
 Route::resource('customers', CustomerController::class);
+
 Route::resource('orders', OrderController::class);
+Route::get('orders/search/{searchTerm}', [OrderController::class, 'search']);
+
 Route::resource('users', UserController::class);
-Route::resource('sales', UserController::class);
-Route::resource('store', UserController::class);
+
+Route::resource('sales', SaleController::class);
+
+Route::resource('store', StoreController::class);
