@@ -1,5 +1,5 @@
 @php
-    $links = [['url' => route('home'), 'text' => 'Home'], ['url' => route('orders.index'), 'text' => 'Orders'], ['url' => route('home'), 'text' => 'Store'], ['url' => route('home'), 'text' => 'Files']];
+    $links = [['url' => route('home'), 'text' => 'Home'], ['url' => route('orders.index'), 'text' => 'Orders'], ['url' => route('home'), 'text' => 'Store'], ['url' => route('home'), 'text' => 'Sales'], ['url' => route('home'), 'text' => 'Files']];
 @endphp
 
 
@@ -18,7 +18,7 @@
             <ul class="hidden md:flex">
                 @foreach ($links as $link)
                     <li class=""><a
-                            class="w-full px-6 py-2 text-2xl text-gray-600 font-semibold rounded cursor-pointer hover:bg-primary-400 hover:text-white"
+                            class="w-full px-6 py-2 text-xl text-gray-600 font-semibold rounded cursor-pointer hover:bg-primary-400 hover:text-white"
                             href="{{ $link['url'] }}">{{ $link['text'] }}</a>
                     </li>
                 @endforeach
