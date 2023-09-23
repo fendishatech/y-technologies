@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::truncate();
+        // User::truncate();
 
         User::create([
             'first_name' => 'John',

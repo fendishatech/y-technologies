@@ -35,6 +35,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'customer_id' => ['required', 'exists:customers,id'],
             'order_no' => ['required', 'string', 'max:255'],
@@ -47,12 +48,23 @@ class OrderController extends Controller
             'prepay' => ['required', 'numeric'],
             'width' => ['required', 'numeric'],
             'height' => ['required', 'numeric'],
+            'design' => ['nullable', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
 
-        try {
 
-            if ($validatedData) {
-                // size
+        if ($validatedData) {
+            try {
+                // save design file to storage and save path to database
+                if ($request->hasFile('design')) {
+                    // get file
+                    $design_file = $request->file('design');
+                    // get filename
+                    $filename = time() . '-' . $design_file->getClientOriginalName();
+                    // move image to store/uploads
+                    $file_path = $design_file->storeAs('designs', $filename, 'public');
+                }
+
+                // set size
                 $width = $validatedData['width'];
                 $height = $validatedData['height'];
 
@@ -60,8 +72,12 @@ class OrderController extends Controller
 
                 $validatedData['size'] = $size;
 
+                // set remaining pay
                 $remaining_pay = $validatedData['price'] - $validatedData['prepay'];
                 $validatedData['remaining'] = $remaining_pay;
+
+                // set file path
+                $validatedData['design_img'] = isset($file_path) ? $file_path : null;
 
                 // Create a new order using mass assignment
                 $order = Order::create($validatedData);
@@ -71,23 +87,24 @@ class OrderController extends Controller
                 } else {
                     return redirect()->back()->withErrors("All fields are required")->withInput();
                 }
-            } else {
-                return redirect()->back()->withErrors("All fields are required")->withInput();
+            } catch (\Throwable $th) {
+                //throw $th;
+                return redirect()->back()->withErrors(["custom_error" => "There was an error saving new record"])->withInput();
             }
-        } catch (\Throwable $th) {
-            //throw $th;
-            return redirect()->back()->withErrors(["custom_error" => "There was an error saving new record"])->withInput();
+        } else {
+            return redirect()->back()->withErrors("All fields are required")->withInput();
         }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Order $id)
+    public function show(int $id)
     {
-        $order = Order::findOrFail($id);
-        return view('orders.show');
+        $order = Order::with('customer')->findOrFail($id);
+        return view('orders.show')->with(['order' => $order]);
     }
+
 
 
     /**
@@ -110,8 +127,13 @@ class OrderController extends Controller
     {
         $customers = Customer::all();
         $order = Order::find($id);
-        $order->width = 234;
-        $order->height = 222;
+        // Split the size string by "x" to get an array of width and height values
+        list($width, $height) = explode('*', $order['size']);
+
+        // Remove any non-numeric characters and spaces from the width and height values
+        $order->width = preg_replace('/[^0-9]/', '', $width);
+        $order->height = preg_replace('/[^0-9]/', '', $height);
+
         return view('orders.edit')->with(['order' => $order, 'customers' => $customers]);
     }
 
@@ -132,12 +154,23 @@ class OrderController extends Controller
             'prepay' => ['nullable', 'numeric'],
             'width' => ['nullable', 'numeric'],
             'height' => ['nullable', 'numeric'],
+            'design' => ['nullable', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
 
-        try {
-            $order = Order::find($id);
+        if ($validatedData) {
+            try {
+                $order = Order::find($id);
 
-            if ($validatedData) {
+                // save design file to storage and save path to database
+                if ($request->hasFile('design')) {
+                    // get file
+                    $design_file = $request->file('design');
+                    // get filename
+                    $filename = time() . '-' . $design_file->getClientOriginalName();
+                    // move image to store/uploads
+                    $file_path = $design_file->storeAs('designs', $filename, 'public');
+                }
+
                 // size
                 $width = $validatedData['width'];
                 $height = $validatedData['height'];
@@ -149,6 +182,7 @@ class OrderController extends Controller
                 $remaining_pay = $validatedData['price'] - $validatedData['prepay'];
                 $validatedData['remaining'] = $remaining_pay;
 
+                $validatedData['design_img'] = isset($file_path) ? $file_path : $order->design_img;
                 // Create a new order using mass assignment
                 $order->update($validatedData);
 
@@ -157,12 +191,13 @@ class OrderController extends Controller
                 } else {
                     return redirect()->back()->withErrors("All fields are required")->withInput();
                 }
-            } else {
-                return redirect()->back()->withErrors("All fields are required")->withInput();
+            } catch (\Throwable $th) {
+                //throw $th;
+                return redirect()->back()->withErrors(["custom_error" => "There was an error saving new record"])->withInput();
             }
-        } catch (\Throwable $th) {
-            //throw $th;
-            return redirect()->back()->withErrors(["custom_error" => "There was an error saving new record"])->withInput();
+        } else {
+            return redirect()->back()->withErrors("All fields
+        are required")->withInput();
         }
     }
 

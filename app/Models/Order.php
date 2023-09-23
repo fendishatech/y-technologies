@@ -21,7 +21,8 @@ class Order extends Model
         'status',
         'price',
         'prepay',
-        'remaining'
+        'remaining',
+        'design_img'
     ];
 
     use HasFactory;

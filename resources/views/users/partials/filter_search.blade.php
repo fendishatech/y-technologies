@@ -21,10 +21,13 @@
         <input type="text" placeholder="Search" id="searchInput"
             class="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
 
+        <div class="hidden top-[45px] p-2 pb-0 w-full h-[100px] absolute rounded bg-white shadow-lg overflow-scroll"
+            id="search-results">
+        </div>
     </div>
 </div>
 
-<div id="search-results"></div>
+
 
 {{-- @section('scripts') --}}
 <script>
@@ -39,20 +42,22 @@
             if (searchTerm === '') {
                 // If the search term is empty, display everything or perform a default action
                 searchResults.innerHTML = ''; // Clear previous results
+                searchResults.classList.add('hidden');
                 // You can choose to display all items, show a default message, or perform any desired action here
                 return;
             }
-            fetch(`/clients/search/${encodeURIComponent(searchTerm)}`)
+            fetch(`/orders/search/${encodeURIComponent(searchTerm)}`)
                 .then(response => response.json())
                 .then(data => {
                     // Handle and display the search results
                     searchResults.innerHTML = ''; // Clear previous results
 
                     if (data.length > 0) {
+                        searchResults.classList.remove('hidden');
                         data.forEach(result => {
                             const resultDiv = document.createElement('div');
-                            resultDiv.innerHTML = `<h1 class="text-center text-2xl">${result
-                                .first_name}</h1>`; // Display the result data
+                            resultDiv.innerHTML = `<h1 class="text-center text-2xl"> <a href="/orders/${result.id}">${result
+                                .order_no}</a></h1>`; // Display the result data
                             searchResults.appendChild(resultDiv);
                         });
                     } else {

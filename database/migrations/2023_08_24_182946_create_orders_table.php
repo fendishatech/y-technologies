@@ -34,6 +34,8 @@ return new class extends Migration
             $table->decimal('prepay', 10, 2);
             $table->decimal('remaining', 10, 2);
 
+            $table->string('design_img')->nullable();
+
             $table->timestamps();
         });
     }
@@ -43,6 +45,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('oreders');
+        Schema::dropIfExists('orders');
     }
 };

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
     {
         Customer::factory()->count(50)->create();
         Order::factory()->count(50)->create();
-        User::factory()->count(8)->create();
+        // User::factory()->count(8)->create();
+        $this->call(UserSeeder::class);
     }
 }
