@@ -7,8 +7,7 @@
 @section('content')
     <div class="container mx-auto px-6">
         <div class="w-full flex items-center justify-center ">
-            <form class="w-full  my-8 rounded-lg bg-white" action="{{ url('/products') }}" method="POST"
-                enctype="multipart/form-data">
+            <form class="w-full  my-8 rounded-lg bg-white" action="{{ url('/products') }}" method="POST">
                 @csrf
                 <h2 class="mt-4 mb-5 px-5 text-3xl font-medium opacity-80 text-gray-600 ">
                     Add New product
