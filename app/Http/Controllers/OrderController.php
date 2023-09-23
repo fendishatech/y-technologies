@@ -35,7 +35,6 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'customer_id' => ['required', 'exists:customers,id'],
             'order_no' => ['required', 'string', 'max:255'],
@@ -50,7 +49,6 @@ class OrderController extends Controller
             'height' => ['required', 'numeric'],
             'design' => ['nullable', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
-
 
         if ($validatedData) {
             try {
@@ -105,8 +103,6 @@ class OrderController extends Controller
         return view('orders.show')->with(['order' => $order]);
     }
 
-
-
     /**
      * Search Client record by order no
      */
@@ -143,17 +139,17 @@ class OrderController extends Controller
     public function update(Request $request, string $id)
     {
         $validatedData = $request->validate([
-            'customer_id' => ['nullable', 'exists:customers,id'],
-            'order_no' => ['nullable', 'string', 'max:255'],
-            'material' => ['nullable', 'string', 'max:255'],
-            'thickness' => ['nullable', 'string', 'max:255'],
-            'quantity' => ['nullable', 'integer'],
-            'item_name' => ['nullable', 'string', 'max:255'],
-            'item_id' => ['nullable', 'string', 'max:255'],
-            'price' => ['nullable', 'numeric'],
-            'prepay' => ['nullable', 'numeric'],
-            'width' => ['nullable', 'numeric'],
-            'height' => ['nullable', 'numeric'],
+            'customer_id' => ['required', 'exists:customers,id'],
+            'order_no' => ['required', 'string', 'max:255'],
+            'material' => ['required', 'string', 'max:255'],
+            'thickness' => ['required', 'string', 'max:255'],
+            'quantity' => ['required', 'integer'],
+            'item_name' => ['required', 'string', 'max:255'],
+            'item_id' => ['required', 'string', 'max:255'],
+            'price' => ['required', 'numeric'],
+            'prepay' => ['required', 'numeric'],
+            'width' => ['required', 'numeric'],
+            'height' => ['required', 'numeric'],
             'design' => ['nullable', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
 
@@ -204,7 +200,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         $order = Order::find($id);
         $order->delete();

@@ -1,5 +1,5 @@
 @php
-    $links = [['url' => route('home'), 'text' => 'Home'], ['url' => route('orders.index'), 'text' => 'Orders'], ['url' => route('home'), 'text' => 'Products'], ['url' => route('home'), 'text' => 'Invoice'], ['url' => route('home'), 'text' => 'Files']];
+    $links = [['url' => route('home'), 'text' => 'Home'], ['url' => route('orders.index'), 'text' => 'Orders'], ['url' => route('products.index'), 'text' => 'Products'], ['url' => route('invoices.index'), 'text' => 'Invoice'], ['url' => route('fileShares.index'), 'text' => 'Files'], ['url' => route('designs.index'), 'text' => 'Designs'], ['url' => route('users.index'), 'text' => 'Users'], ['url' => route('customers.index'), 'text' => 'Customers']];
 @endphp
 
 
