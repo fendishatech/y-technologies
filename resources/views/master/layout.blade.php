@@ -8,6 +8,8 @@
     <title>Y Technologies | @yield('page_title')</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="/css/main.css">
+    {{-- <link rel="stylesheet" href="build/assets/app-fb42db8a.css">
+    <script src="/build/assets/app-0d91dc04.js" defer></script> --}}
     @yield('styles')
 </head>
 

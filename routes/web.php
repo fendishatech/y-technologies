@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DesignController;
 use App\Http\Controllers\FileShareController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;

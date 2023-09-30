@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Y technologies | Login</title>
     @vite('resources/css/app.css')
+    {{-- <link rel="stylesheet" href="build/assets/app-fb42db8a.css">
+    <script src="/build/assets/app-0d91dc04.js" defer></script> --}}
 </head>
 
 <body>
