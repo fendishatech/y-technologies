@@ -4,49 +4,50 @@
 
 
 <header>
-    <nav class="container mx-auto p-6 relative">
+    <nav class="container mx-auto px-6 py-4 relative">
 
-        <div class="flex items-center justify-between">
-            {{-- Logo --}}
-            <a href="{{ url('home') }}">
-                <div class="flex items-center">
-                    <img class="w-24 h-12" src="/images/logo/y-tech-logo.svg" alt="Logo">
-                    <span class="hidden md:block text-primary-500 uppercase text-2xl font-semibold">Technologies</span>
-                </div>
-            </a>
-            {{-- Links --}}
-            <ul class="hidden md:flex">
-                @foreach ($links as $link)
-                    <li class=""><a
-                            class="w-full px-6 py-2 text-xl text-gray-600 font-semibold rounded cursor-pointer hover:bg-primary-400 hover:text-white"
-                            href="{{ $link['url'] }}">{{ $link['text'] }}</a>
-                    </li>
-                @endforeach
-            </ul>
+        <div class="flex items-center justify-end">
             {{-- Actions --}}
-            <form class="hidden md:flex" action="{{ url('logout') }}" method="POST">
+
+            <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
+                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                type="button">Dropdown hover <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="m1 1 4 4 4-4" />
+                </svg>
+            </button>
+
+            <!-- Dropdown menu -->
+            <div id="dropdownHover"
+                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                    <li>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign
+                            out</a>
+                    </li>
+                </ul>
+            </div>
+
+            {{-- <form class="hidden md:flex" action="{{ url('logout') }}" method="POST">
                 @csrf
                 <button type="submit" class="cta-btn-primary">Logout</button>
-            </form>
+            </form> --}}
 
-            <!-- Hamburger Icon -->
-            <button id="menu-btn" class="block hamburger md:hidden focus:outline-none">
-                <span class="hamburger-top"></span>
-                <span class="hamburger-middle"></span>
-                <span class="hamburger-bottom"></span>
-            </button>
-            <!-- Hamburger Icon -->
+
         </div>
-        <!-- Mobile Menu -->
-        <div class="md:hidden">
-            <div id="menu"
-                class="hidden px-4 z-50 absolute flex-col items-center self-end py-8 mt-10 space-y-6  bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-2xl text-2xl text-yellow-800 zelan">
-                @foreach ($links as $link)
-                    <a class="w-full px-6 py-2 text-2xl text-gray-600 font-semibold rounded cursor-pointer hover:bg-primary-400 hover:text-white"
-                        href="{{ $link['url'] }}">{{ $link['text'] }}</a>
-                @endforeach
-            </div>
-        </div>
-        <!-- Mobile Menu -->
     </nav>
 </header>

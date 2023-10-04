@@ -1,4 +1,4 @@
-<footer class=" bg-gray-100 py-24">
+<footer class=" bg-gray-100">
     <div class="container p-6 mx-auto flex flex-col md:flex-row space-y-8 md:space-y-0 items-center justify-between">
         <a href="{{ url('home') }}">
             <div class="flex items-center">
