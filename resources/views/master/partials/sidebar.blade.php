@@ -17,15 +17,15 @@
         @foreach ($menuItems as $item)
             <li
                 class="px-6 py-2 flex items-center justify-start text-xl text-primary-800 hover:text-primary-600 hover:bg-gray-200 hover:rounded-l-[18px]">
-                <a class="w-full" href="{{ $item['url'] }}"><i class="fa {{ $item['icon'] }} mr-3"
-                        aria-hidden="true"></i><span class="hidden sm:inline-flex">{{ $item['label'] }}</span></a>
+                <a class="w-full" href="{{ $item['url'] }}"><i class="text-2xl md:text-md fa {{ $item['icon'] }} mr-3"
+                        aria-hidden="true"></i><span class="hidden md:inline-flex">{{ $item['label'] }}</span></a>
             </li>
         @endforeach
         @foreach ($adminMenuItems as $item)
             <li
                 class="px-6 py-2 flex items-center justify-start text-xl text-primary-800 hover:text-primary-600 hover:bg-gray-200 hover:rounded-l-[18px]">
-                <a class="w-full" href="{{ $item['url'] }}"><i class="fa {{ $item['icon'] }} mr-3"
-                        aria-hidden="true"></i><span class="hidden sm:inline-flex">{{ $item['label'] }}</span></a>
+                <a class="w-full" href="{{ $item['url'] }}"><i class="text-xl md:text-md fa {{ $item['icon'] }} mr-3"
+                        aria-hidden="true"></i><span class="hidden md:inline-flex">{{ $item['label'] }}</span></a>
             </li>
         @endforeach
     </ul>

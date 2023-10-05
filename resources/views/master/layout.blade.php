@@ -19,7 +19,7 @@
 
 <body class="bg-stone-200">
     <div class="flex h-screen">
-        <aside class="w-16 sm:w-52 xl:w-64 bg-white text-gray-300 sticky top-0 overflow-y-auto">
+        <aside class="w-16 md:w-52 xl:w-64 bg-white text-gray-300 sticky top-0 overflow-y-auto">
             @include('master.partials.sidebar')
         </aside>
         <div class="flex-1 bg-gray-100 overflow-y-auto">
