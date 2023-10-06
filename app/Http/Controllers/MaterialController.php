@@ -2,21 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Invoice;
+use App\Models\material;
 use Illuminate\Http\Request;
 
-class InvoiceController extends Controller
+class MaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $invoices = Invoice::orderByDesc('created_at')->paginate(10);
-
-        return view('invoices.index')->with([
-            'invoices' => $invoices
-        ]);
+        //
     }
 
     /**
@@ -38,7 +34,7 @@ class InvoiceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Invoice $invoice)
+    public function show(material $material)
     {
         //
     }
@@ -46,7 +42,7 @@ class InvoiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Invoice $invoice)
+    public function edit(material $material)
     {
         //
     }
@@ -54,7 +50,7 @@ class InvoiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(Request $request, material $material)
     {
         //
     }
@@ -62,7 +58,7 @@ class InvoiceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Invoice $invoice)
+    public function destroy(material $material)
     {
         //
     }

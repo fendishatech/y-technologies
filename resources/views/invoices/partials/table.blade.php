@@ -27,27 +27,12 @@
 
                             <th scope="col"
                                 class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-600 ">
-                                Customer Full Name
+                                Name
                             </th>
 
                             <th scope="col"
                                 class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-600 ">
-                                Item Id
-                            </th>
-
-                            <th scope="col"
-                                class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-600 ">
-                                Material
-                            </th>
-
-                            <th scope="col"
-                                class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-600 ">
-                                Thickness
-                            </th>
-
-                            <th scope="col"
-                                class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-600 ">
-                                Size
+                                Description
                             </th>
 
                             <th scope="col"
@@ -57,7 +42,7 @@
 
                             <th scope="col"
                                 class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-600 ">
-                                Status
+                                Price
                             </th>
 
                             <th scope="col"
@@ -68,26 +53,19 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
 
-                        @foreach ($orders as $order)
+                        @foreach ($invoices as $invoice)
                             <tr class="border-b border-gray-200 ">
                                 <td class="py-4 px-6 text-left">{{ $loop->iteration }}</td>
-                                <td class="py-4 px-6 text-left">{{ $order->customer->first_name }}
-                                    {{ $order->customer->last_name }}</td>
-                                <td class="py-4 px-6 text-left">{{ $order->item_id }}</td>
-                                <td class="py-4 px-6 text-left">{{ $order->material }}</td>
-                                <td class="py-4 px-6 text-left">{{ $order->thickness }}</td>
-                                <td class="py-4 px-6 text-left">{{ $order->size }}</td>
-                                <td class="py-4 px-6 text-left">{{ $order->quantity }}</td>
-                                <td class="py-4 px-6 text-left">
-                                    <button class="px-4 py-1 rounded-full bg-teal-800 text-white">Pending</button>
-                                </td>
+                                <td class="py-4 px-6 text-left">{{ $invoice->name }}</td>
+                                <td class="py-4 px-6 text-left">{{ $invoice->desc }}</td>
+                                <td class="py-4 px-6 text-left">{{ $invoice->quantity }}</td>
+                                <td class="py-4 px-6 text-left">{{ $invoice->price }}</td>
                                 <td class="py-4 px-6 text-left flex justify-start gap-2">
-                                    <a href="{{ url('/orders/' . $order->id) }}"
-                                        class="px-4 py-2 text-sm text-indigo-600 hover:text-indigo-200 bg-indigo-200 hover:bg-indigo-400 rounded-full">View</a>
-                                    <a href="{{ url('/orders/' . $order->id . '/edit') }}"
+
+                                    <a href="{{ url('/invoices/' . $invoice->id . '/edit') }}"
                                         class="px-4 py-1 text-md text-orange-600 hover:text-orange-200 bg-orange-200 hover:bg-orange-400 rounded-full">Edit</a>
 
-                                    <form action="{{ url('/orders/' . $order->id) }}" method="POST">
+                                    <form action="{{ url('/invoices/' . $invoice->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button

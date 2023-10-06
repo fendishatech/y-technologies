@@ -1,30 +1,30 @@
 @extends('master.layout')
 
 @section('page_title')
-    Orders
+    Invoices
 @endsection
 
 @section('content')
     <div class="p-4">
-        {{-- Orders table --}}
+        {{-- Invoices table --}}
         <section class="container px-4 mx-auto">
             {{-- Title --}}
             <div
                 class="flex flex-col-reverse gap-y-4 justify-left sm:flex-row sm:gap-y-0  sm:items-center sm:justify-between">
                 <a class="px-6 py-2 text-xl bg-primary-700 opacity-70 rounded-md text-white font-semibold hover:bg-primary-800"
-                    href="{{ url('/orders/create') }}">Add New Order</a>
+                    href="{{ url('/invoices/create') }}">Add New Invoice</a>
                 <div>
                     <div class="flex items-center gap-x-3">
-                        <h2 class="text-3xl font-medium text-primary-800 opacity-80">Orders</h2>
+                        <h2 class="text-3xl font-medium text-primary-800 opacity-80">Invoices</h2>
                     </div>
                 </div>
             </div>
             {{-- Filter/Search --}}
-            @include('orders/partials/filter_search')
+            @include('invoices/partials/filter_search')
             {{-- Table --}}
-            @include('orders/partials/orders_table')
+            @include('invoices/partials/table')
             {{-- Paginate --}}
-            @include('orders/partials/page_links')
+            @include('invoices/partials/page_links')
         </section>
     </div>
 @endsection

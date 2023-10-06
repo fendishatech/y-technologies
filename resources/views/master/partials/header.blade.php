@@ -6,31 +6,34 @@
 <header class="bg-gray-200">
     {{-- <nav class="container mx-auto px-6 py-4 relative"> --}}
 
-    {{-- <div class="flex items-center justify-end"> --}}
-    {{-- Actions --}}
-    {{-- @if (Session::get('user'))
-                <div id="profile-menu" class="cursor-pointer flex items-baseline space-x-4">
-                    <p class="text-primary-500 text-xl">Welcome, {{ Session::get('user')['first_name'] }}
-                        {{ Session::get('user')['last_name'] }}</p>
-                    <i class="fa fa-ellipsis-v text-primary-700 text-xl"></i>
-                </div>
-            @endif --}}
+    <div class="px-6 py-2 flex items-center justify-end">
+        {{-- Actions --}}
+        @if (Session::get('user'))
+            <div id="profile-menu" class="cursor-pointer flex items-baseline space-x-4">
+                <p class="text-primary-500 text-xl">Welcome, {{ Session::get('user')['first_name'] }}
+                    {{ Session::get('user')['last_name'] }}</p>
+                <i class="fa fa-ellipsis-v text-primary-700 text-xl"></i>
+            </div>
+        @endif
+    </div>
 
     {{-- <form class="hidden md:flex" action="{{ url('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="cta-btn-primary">Logout</button>
-            </form> --}}
+        @csrf
+        <button type="submit" class="cta-btn-primary">Logout</button>
+    </form> --}}
 
 
     {{-- </div> --}}
     {{-- </nav> --}}
     <!-- Profile dropdown -->
-    <div class="relative inline-block text-left">
+    {{-- <div class="relative inline-block text-left">
         <div>
             <button type="button"
                 class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border rounded-md hover:bg-gray-50 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:bg-gray-200"
                 id="userMenuButton" aria-expanded="true" aria-haspopup="true">
-                Welcome, {{ Session::get('user')['first_name'] }}
+                @if (Session::get('user'))
+                    Welcome, {{ Session::get('user')['first_name'] }}
+                @endif
                 <!-- Add a dropdown icon here -->
             </button>
         </div>
@@ -55,5 +58,5 @@
                 </button>
             </form>
         </div>
-    </div>
+    </div> --}}
 </header>

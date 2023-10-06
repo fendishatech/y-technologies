@@ -6,6 +6,7 @@ use App\Http\Controllers\DesignController;
 use App\Http\Controllers\FileShareController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -47,3 +48,9 @@ Route::get('fileShares/search/{searchTerm}', [FileShareController::class, 'searc
 
 Route::resource('designs', DesignController::class);
 Route::get('designs/search/{searchTerm}', [DesignController::class, 'search']);
+
+Route::resource('materials', MaterialController::class);
+Route::get('materials/search/{searchTerm}', [MaterialController::class, 'search']);
+
+Route::resource('thicknesses', ThicknessController::class);
+Route::get('thicknesses/search/{searchTerm}', [ThicknessController::class, 'search']);

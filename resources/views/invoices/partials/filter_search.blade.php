@@ -18,11 +18,11 @@
         </span>
 
 
-        <input type="text" placeholder="Search" id="searchInput"
+        <input type="text" placeholder="Search" id="productSearchInput"
             class="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5  focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
 
         <div class="hidden top-[45px] p-2 pb-0 w-full h-[100px] absolute rounded bg-white shadow-lg overflow-scroll"
-            id="search-results">
+            id="product-search-results">
         </div>
     </div>
 </div>
@@ -33,8 +33,8 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
 
-        const searchInput = document.getElementById('searchInput');
-        const searchResults = document.getElementById('search-results');
+        const searchInput = document.getElementById('productSearchInput');
+        const searchResults = document.getElementById('product-search-results');
 
         searchInput.addEventListener('keyup', function() {
             const searchTerm = searchInput.value;
@@ -46,7 +46,7 @@
                 // You can choose to display all items, show a default message, or perform any desired action here
                 return;
             }
-            fetch(`/orders/search/${encodeURIComponent(searchTerm)}`)
+            fetch(`/products/search/${encodeURIComponent(searchTerm)}`)
                 .then(response => response.json())
                 .then(data => {
                     // Handle and display the search results
@@ -57,7 +57,7 @@
                         data.forEach(result => {
                             const resultDiv = document.createElement('div');
                             resultDiv.innerHTML = `<h1 class="text-center text-2xl"> <a href="/orders/${result.id}">${result
-                                .order_no}</a></h1>`; // Display the result data
+                                .name}</a></h1>`; // Display the result data
                             searchResults.appendChild(resultDiv);
                         });
                     } else {
